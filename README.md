@@ -18,6 +18,7 @@ pixel by pixel in `tools/pixelart.py`.
 | **IV Drip Stand** | A wheeled pole with an infusion pump. Refill the bag with a Saline Bag and it heals anyone within 4 blocks, one dose at a time. The bag visibly drains: full, half, then empty. |
 | **Heart Monitor** | The screen lights up on its own whenever a living patient is within 6 blocks, with a live ECG. Right-click for a full vitals chart of the nearest patient in chat. |
 | **Supply Cabinet** | Right-click to restock with bandages, painkillers, saline bags, syringes and the occasional medkit. 30 second cooldown per player. |
+| **Sharps Container** | A biohazard disposal bin. Drop used syringes in the slot and the window fills (empty, amber, half, full). When full it hisses green fumes and beeps until you seal it with a Biohazard Bag. |
 | **Hospital Floor / Wall** | Clean linoleum and panelled walls to build the ward with. |
 
 ## The tools
@@ -31,6 +32,7 @@ pixel by pixel in `tools/pixelart.py`.
 | **Stethoscope** | Right-click a patient for a full vitals chart, or use it on yourself. |
 | **Defibrillator** | Shocks a critical patient back to full health and clears their debuffs. 30 second cooldown. |
 | **Saline Bag** | Refills an IV drip stand. |
+| **Biohazard Bag** | Seals a full sharps container so it is safe to dispose of. |
 | **Scalpel** | A fast, light surgical blade. |
 
 ## Commands
@@ -60,6 +62,11 @@ python3 tools/models.py --mc 26.3    # block models, blockstates, item models, r
 ```
 
 `tools/bbmodel/` holds Blockbench sources for the three custom models.
+
+## Links
+
+- Modrinth: https://modrinth.com/mod/hospital
+- Source and issues: https://github.com/UltimateGamerMC/Hospital-Mod
 
 ## Licence
 
