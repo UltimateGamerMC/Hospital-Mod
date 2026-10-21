@@ -1,6 +1,6 @@
 # Hospital Mod
 
-A working hospital for Minecraft — patient beds, IV drips, heart monitors, a supply cabinet and a
+A working hospital for Minecraft: patient beds, IV drips, heart monitors, a supply cabinet and a
 full set of medical tools. Built for **Fabric**, on **Minecraft 26.3** and **1.21.11**.
 
 Everything is hand-made: three custom block models authored box by box, and 16x16 textures drawn
@@ -31,15 +31,15 @@ pixel by pixel in `tools/pixelart.py`.
 
 ## Commands
 
-- `/hospital give` — the whole kit.
-- `/hospital heal` — full heal and clear every debuff.
-- `/hospital vitals` — print your own vitals chart.
-- `/hospital room` — build a complete ward around you: floor, walls, ceiling, lights, two beds with
+- `/hospital give`: the whole kit.
+- `/hospital heal`: full heal and clear every debuff.
+- `/hospital vitals`: print your own vitals chart.
+- `/hospital room`: build a complete ward around you: floor, walls, ceiling, lights, two beds with
   drips, a heart monitor and a supply cabinet.
 
 ## Crafting
 
-Everything is craftable from vanilla materials — iron, glass, white concrete, quartz, wool, string,
+Everything is craftable from vanilla materials: iron, glass, white concrete, quartz, wool, string,
 paper, sugar and redstone. Recipes unlock as you pick up the ingredients.
 
 ## Building
@@ -59,4 +59,4 @@ python3 tools/models.py --mc 26.3    # block models, blockstates, item models, r
 
 ## Licence
 
-CC0-1.0 — do whatever you like with it.
+CC0-1.0, do whatever you like with it.

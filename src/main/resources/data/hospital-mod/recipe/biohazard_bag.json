@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:yellow_dye",
+    "minecraft:string"
+  ],
+  "result": {
+    "id": "hospital-mod:biohazard_bag",
+    "count": 2
+  }
+}

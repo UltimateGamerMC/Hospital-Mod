@@ -27,6 +27,7 @@ public class ItemRegistry {
 	public static Item STETHOSCOPE;
 	public static Item DEFIBRILLATOR;
 	public static Item SCALPEL;
+	public static Item BIOHAZARD_BAG;
 
 	public static void register() {
 		BANDAGE = item("bandage", properties -> new MedicalItem(properties.stacksTo(16),
@@ -51,6 +52,8 @@ public class ItemRegistry {
 		DEFIBRILLATOR = item("defibrillator", properties -> new DefibrillatorItem(properties.stacksTo(1)));
 
 		SCALPEL = item("scalpel", properties -> new Item(properties.sword(ToolMaterial.IRON, 2.0F, -1.6F)));
+
+		BIOHAZARD_BAG = item("biohazard_bag", properties -> new Item(properties.stacksTo(16)));
 	}
 
 	private static Item item(String name, java.util.function.Function<Item.Properties, Item> factory) {

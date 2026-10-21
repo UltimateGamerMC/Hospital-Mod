@@ -339,40 +339,40 @@ ART["block/patient_gown"] = [
 # ---------------------------------------------------------- placeable blocks -
 ART["block/hospital_floor"] = [
     "6666666666666666",
-    "6uuuuuuu6uuuuuuu",
-    "6u5555556u555555",
-    "6u5555556u555555",
-    "6u5555556u555555",
-    "6u5555a56u555555",
-    "6u5555556u555a55",
-    "6uuuuuuu6uuuuuuu",
+    "6777u7u767u77776",
+    "67u77777677777u6",
+    "6777777767u77776",
+    "6777u77767777776",
+    "677777776777u776",
+    "67u7777767777776",
+    "677777u767777776",
     "6666666666666666",
-    "6uuuuuuu6uuuuuuu",
-    "6u5555556u555555",
-    "6u5a55556u555555",
-    "6u5555556u555555",
-    "6u5555556u55a555",
-    "6u5555556u555555",
-    "6uuuuuuu6uuuuuuu",
+    "67u7777767777u76",
+    "6777777767u77776",
+    "677777u767777776",
+    "6777u777677777u6",
+    "6777777767777776",
+    "67u7777767u77776",
+    "6777777767777776",
 ]
 
 ART["block/hospital_wall"] = [
-    "7777777777777777",
-    "7888888888888877",
-    "7888888888888877",
-    "7888888888888877",
-    "7888888888888877",
-    "7777777777777777",
-    "7666666666666667",
-    "7666666666666667",
-    "7666aaaaaaaaa667",
-    "7666aaaaaaaaa667",
-    "7666666666666667",
-    "7666666666666667",
-    "7777777777777777",
-    "7888888888888877",
-    "7888888888888877",
-    "7888888888888877",
+    "7777777677777776",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7888888688888886",
+    "7777777677777776",
+    "6666666566666665",
+    "6uuuuuu5uuuuuuu5",
+    "6uuuuuu5uuuuuuu5",
+    "5555555555555555",
 ]
 
 ART["block/medical_cabinet_front"] = [
@@ -433,6 +433,139 @@ ART["block/medical_cabinet_top"] = [
 ]
 
 # ------------------------------------------------------------------- items ---
+ART["block/sharps_body"] = [
+    "hhhhhhhhhhhhhhhh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hhhhhhhhhhhhhhhh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hhhhhhhhhhhhhhhh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hhhhhhhhhhhhhhhh",
+    "hggggggggggggggh",
+    "hggggggggggggggh",
+    "hhhhhhhhhhhhhhhh",
+]
+
+ART["block/sharps_lid"] = [
+    "2222222222222222",
+    "2111111111111112",
+    "2111111111111112",
+    "2222222222222222",
+    "2111111111111112",
+    "2111111111111112",
+    "2111111111111112",
+    "2222222222222222",
+    "2111111111111112",
+    "2111111111111112",
+    "2222222222222222",
+    "2111111111111112",
+    "2111111111111112",
+    "2111111111111112",
+    "2222222222222222",
+    "2000000000000002",
+]
+
+ART["block/sharps_window_empty"] = [
+    "0000000000000000",
+    "0uuuuuuuuuuuuuu0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0uuuuuuuuuuuuuu0",
+    "0000000000000000",
+]
+
+ART["block/sharps_window_low"] = [
+    "0000000000000000",
+    "0uuuuuuuuuuuuuu0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0uuuuuuuuuuuuuu0",
+    "0000000000000000",
+]
+
+ART["block/sharps_window_half"] = [
+    "0000000000000000",
+    "0uuuuuuuuuuuuuu0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0u777777777777u0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0ujjjjjjjjjjjju0",
+    "0uuuuuuuuuuuuuu0",
+    "0000000000000000",
+]
+
+ART["block/sharps_window_full"] = [
+    "0000000000000000",
+    "0uuuuuuuuuuuuuu0",
+    "0uggggggggggggu0",
+    "0uggggggsgggggu0",
+    "0ugggggsggggggu0",
+    "0uggggsgggggggu0",
+    "0ugggsggggggggu0",
+    "0uggsgggggggggu0",
+    "0uggggggggggggu0",
+    "0uggggggggggggu0",
+    "0uggggggggggggu0",
+    "0uggggggggggggu0",
+    "0uggggggggggggu0",
+    "0uggggggggggggu0",
+    "0uuuuuuuuuuuuuu0",
+    "0000000000000000",
+]
+
+ART["item/biohazard_bag"] = [
+    "................",
+    "......00........",
+    ".....0gg0.......",
+    "....0gggg0......",
+    "..00iiiiii00....",
+    "..0iiiiiiii0....",
+    "..0ii00ii0i0....",
+    "..0i000000i0....",
+    "..0i000000i0....",
+    "..0ii0000ii0....",
+    "..0iii00iii0....",
+    "..0iiiiiiii0....",
+    "..0iiiiiiii0....",
+    "..0iiiiiiii0....",
+    "..0000000000....",
+    "................",
+]
+
 ART["item/bandage"] = [
     "................",
     "................",
@@ -584,6 +717,39 @@ ART["item/scalpel"] = [
     "..00............",
     "................",
 ]
+
+
+def biohazard_rows(size=16):
+    """The biohazard trefoil: three lobes around a centre ring, placed pixel by pixel."""
+    import math
+
+    centre = (size - 1) / 2.0
+    lobes = [(90.0, 3.7, 3.1), (210.0, 3.7, 3.1), (330.0, 3.7, 3.1)]
+    rows = []
+    for y in range(size):
+        row = ""
+        for x in range(size):
+            ink = False
+            for angle, distance, radius in lobes:
+                a = math.radians(angle)
+                lx = centre + math.cos(a) * distance
+                ly = centre - math.sin(a) * distance
+                d = math.hypot(x - lx, y - ly)
+                if d <= radius:
+                    ink = True
+                if d <= radius * 0.40:
+                    ink = False
+            dc = math.hypot(x - centre, y - centre)
+            if dc <= 2.4:
+                ink = True
+            if dc <= 1.1:
+                ink = False
+            row += "0" if ink else "i"
+        rows.append(row)
+    return rows
+
+
+ART["block/sharps_hazard"] = biohazard_rows()
 
 
 def paint(name, rows):

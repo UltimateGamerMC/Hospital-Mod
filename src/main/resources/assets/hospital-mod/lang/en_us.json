@@ -13,6 +13,8 @@
   "item.hospital-mod.stethoscope": "Stethoscope",
   "item.hospital-mod.defibrillator": "Defibrillator",
   "item.hospital-mod.scalpel": "Scalpel",
+  "item.hospital-mod.biohazard_bag": "Biohazard Bag",
+  "block.hospital-mod.sharps_container": "Sharps Container",
   "itemGroup.hospital-mod.hospital": "Hospital",
   "msg.hospital-mod.rested": "You lie back. Your vitals steady and this bed is now your respawn point.",
   "msg.hospital-mod.got_up": "You get up.",
@@ -34,5 +36,10 @@
   "msg.hospital-mod.cabinet_restocking": "The cabinet is restocking... %ss",
   "msg.hospital-mod.command_give": "Hospital kit added to your inventory.",
   "msg.hospital-mod.command_heal": "Treated. Cleared %s debuffs.",
-  "msg.hospital-mod.command_room": "Ward built. Two beds, two drips, a monitor and a cabinet."
+  "msg.hospital-mod.command_room": "Ward built. Two beds, two drips, a monitor and a cabinet.",
+  "msg.hospital-mod.sharps_dropped": "Sharps dropped in. The bin is %s/%s full.",
+  "msg.hospital-mod.sharps_level": "Sharps container: %s/%s full.",
+  "msg.hospital-mod.sharps_full": "The bin is full. Seal it with a biohazard bag.",
+  "msg.hospital-mod.sharps_empty": "The sharps container is empty.",
+  "msg.hospital-mod.sharps_sealed": "You seal the full bin into a biohazard bag. Safe to dispose of."
 }

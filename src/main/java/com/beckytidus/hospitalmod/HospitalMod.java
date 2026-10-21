@@ -28,6 +28,7 @@ public class HospitalMod implements ModInitializer {
 			output.accept(BlockRegistry.MEDICAL_CABINET.asItem());
 			output.accept(BlockRegistry.HOSPITAL_FLOOR.asItem());
 			output.accept(BlockRegistry.HOSPITAL_WALL.asItem());
+			output.accept(BlockRegistry.SHARPS_CONTAINER.asItem());
 		});
 
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(output -> {
@@ -42,6 +43,7 @@ public class HospitalMod implements ModInitializer {
 			output.accept(ItemRegistry.MEDKIT);
 			output.accept(ItemRegistry.PAINKILLERS);
 			output.accept(ItemRegistry.SALINE_BAG);
+			output.accept(ItemRegistry.BIOHAZARD_BAG);
 		});
 
 		LOGGER.info("Hospital Mod loaded successfully!");

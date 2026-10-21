@@ -71,6 +71,8 @@ public final class WardBuilder {
 			com.beckytidus.hospitalmod.block.HeartMonitorBlock.FACING, rotate(Direction.WEST, facing)));
 		set(level, world(floor, facing, HALF_WIDTH, 0, 4), BlockRegistry.MEDICAL_CABINET.defaultBlockState().setValue(
 			com.beckytidus.hospitalmod.block.MedicalCabinetBlock.FACING, rotate(Direction.WEST, facing)));
+		set(level, world(floor, facing, HALF_WIDTH - 1, 0, 6), BlockRegistry.SHARPS_CONTAINER.defaultBlockState().setValue(
+			com.beckytidus.hospitalmod.block.FacingBlock.FACING, rotate(Direction.WEST, facing)));
 	}
 
 	private static void set(ServerLevel level, BlockPos pos, BlockState state) {

@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=north,fill=0": {
+      "model": "hospital-mod:block/sharps_container",
+      "y": 0
+    },
+    "facing=north,fill=1": {
+      "model": "hospital-mod:block/sharps_container_low",
+      "y": 0
+    },
+    "facing=north,fill=2": {
+      "model": "hospital-mod:block/sharps_container_half",
+      "y": 0
+    },
+    "facing=north,fill=3": {
+      "model": "hospital-mod:block/sharps_container_full",
+      "y": 0
+    },
+    "facing=east,fill=0": {
+      "model": "hospital-mod:block/sharps_container",
+      "y": 90
+    },
+    "facing=east,fill=1": {
+      "model": "hospital-mod:block/sharps_container_low",
+      "y": 90
+    },
+    "facing=east,fill=2": {
+      "model": "hospital-mod:block/sharps_container_half",
+      "y": 90
+    },
+    "facing=east,fill=3": {
+      "model": "hospital-mod:block/sharps_container_full",
+      "y": 90
+    },
+    "facing=south,fill=0": {
+      "model": "hospital-mod:block/sharps_container",
+      "y": 180
+    },
+    "facing=south,fill=1": {
+      "model": "hospital-mod:block/sharps_container_low",
+      "y": 180
+    },
+    "facing=south,fill=2": {
+      "model": "hospital-mod:block/sharps_container_half",
+      "y": 180
+    },
+    "facing=south,fill=3": {
+      "model": "hospital-mod:block/sharps_container_full",
+      "y": 180
+    },
+    "facing=west,fill=0": {
+      "model": "hospital-mod:block/sharps_container",
+      "y": 270
+    },
+    "facing=west,fill=1": {
+      "model": "hospital-mod:block/sharps_container_low",
+      "y": 270
+    },
+    "facing=west,fill=2": {
+      "model": "hospital-mod:block/sharps_container_half",
+      "y": 270
+    },
+    "facing=west,fill=3": {
+      "model": "hospital-mod:block/sharps_container_full",
+      "y": 270
+    }
+  }
+}
