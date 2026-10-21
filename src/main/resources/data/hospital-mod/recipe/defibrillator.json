@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IRI",
+    "RGR",
+    "III"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "minecraft:redstone",
+    "G": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "hospital-mod:defibrillator",
+    "count": 1
+  }
+}

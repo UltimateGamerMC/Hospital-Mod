@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "hospital-mod:block/hospital_wall"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:paper",
+    "minecraft:white_dye"
+  ],
+  "result": {
+    "id": "hospital-mod:painkillers",
+    "count": 2
+  }
+}

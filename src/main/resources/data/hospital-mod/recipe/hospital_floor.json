@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "SQS",
+    "WWW"
+  ],
+  "key": {
+    "W": "minecraft:white_concrete",
+    "S": "minecraft:stone",
+    "Q": "minecraft:quartz"
+  },
+  "result": {
+    "id": "hospital-mod:hospital_floor",
+    "count": 8
+  }
+}

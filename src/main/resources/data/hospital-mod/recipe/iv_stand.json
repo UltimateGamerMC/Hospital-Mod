@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    " G ",
+    "I I"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "G": "minecraft:glass_bottle"
+  },
+  "result": {
+    "id": "hospital-mod:iv_stand",
+    "count": 1
+  }
+}

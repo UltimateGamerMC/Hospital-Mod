@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "hospital-mod",
+	"version": "${version}",
+	"name": "Hospital Mod",
+	"description": "Build a working hospital: patient beds, IV drips, heart monitors, a supply cabinet and a full set of medical tools. Rest, treat, revive and run a ward with your friends.",
+	"authors": [
+		"Becky Tidus"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/hospital-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/hospital-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.beckytidus.hospitalmod.HospitalMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,84 @@
+{
+  "variants": {
+    "facing=north,charge=0": {
+      "model": "hospital-mod:block/iv_stand_empty",
+      "y": 0
+    },
+    "facing=north,charge=1": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 0
+    },
+    "facing=north,charge=2": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 0
+    },
+    "facing=north,charge=3": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 0
+    },
+    "facing=north,charge=4": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 0
+    },
+    "facing=east,charge=0": {
+      "model": "hospital-mod:block/iv_stand_empty",
+      "y": 90
+    },
+    "facing=east,charge=1": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 90
+    },
+    "facing=east,charge=2": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 90
+    },
+    "facing=east,charge=3": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 90
+    },
+    "facing=east,charge=4": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 90
+    },
+    "facing=south,charge=0": {
+      "model": "hospital-mod:block/iv_stand_empty",
+      "y": 180
+    },
+    "facing=south,charge=1": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 180
+    },
+    "facing=south,charge=2": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 180
+    },
+    "facing=south,charge=3": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 180
+    },
+    "facing=south,charge=4": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 180
+    },
+    "facing=west,charge=0": {
+      "model": "hospital-mod:block/iv_stand_empty",
+      "y": 270
+    },
+    "facing=west,charge=1": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 270
+    },
+    "facing=west,charge=2": {
+      "model": "hospital-mod:block/iv_stand_half",
+      "y": 270
+    },
+    "facing=west,charge=3": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 270
+    },
+    "facing=west,charge=4": {
+      "model": "hospital-mod:block/iv_stand",
+      "y": 270
+    }
+  }
+}

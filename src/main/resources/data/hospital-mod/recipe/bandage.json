@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:string",
+    "minecraft:string"
+  ],
+  "result": {
+    "id": "hospital-mod:bandage",
+    "count": 2
+  }
+}

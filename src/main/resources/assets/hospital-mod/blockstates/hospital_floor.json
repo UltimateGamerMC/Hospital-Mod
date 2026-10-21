@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hospital-mod:block/hospital_floor"
+    }
+  }
+}

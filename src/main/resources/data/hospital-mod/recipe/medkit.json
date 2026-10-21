@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BPB",
+    "BWB",
+    "BPB"
+  ],
+  "key": {
+    "B": "hospital-mod:bandage",
+    "P": "minecraft:paper",
+    "W": "minecraft:white_wool"
+  },
+  "result": {
+    "id": "hospital-mod:medkit",
+    "count": 1
+  }
+}

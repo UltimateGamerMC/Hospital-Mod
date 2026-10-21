@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "IWI",
+    "ICI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "W": "minecraft:white_wool",
+    "C": "minecraft:chest"
+  },
+  "result": {
+    "id": "hospital-mod:medical_cabinet",
+    "count": 1
+  }
+}

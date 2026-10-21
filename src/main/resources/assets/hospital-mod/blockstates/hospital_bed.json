@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north,occupied=false": {
+      "model": "hospital-mod:block/hospital_bed",
+      "y": 0
+    },
+    "facing=north,occupied=true": {
+      "model": "hospital-mod:block/hospital_bed_occupied",
+      "y": 0
+    },
+    "facing=east,occupied=false": {
+      "model": "hospital-mod:block/hospital_bed",
+      "y": 90
+    },
+    "facing=east,occupied=true": {
+      "model": "hospital-mod:block/hospital_bed_occupied",
+      "y": 90
+    },
+    "facing=south,occupied=false": {
+      "model": "hospital-mod:block/hospital_bed",
+      "y": 180
+    },
+    "facing=south,occupied=true": {
+      "model": "hospital-mod:block/hospital_bed_occupied",
+      "y": 180
+    },
+    "facing=west,occupied=false": {
+      "model": "hospital-mod:block/hospital_bed",
+      "y": 270
+    },
+    "facing=west,occupied=true": {
+      "model": "hospital-mod:block/hospital_bed_occupied",
+      "y": 270
+    }
+  }
+}
