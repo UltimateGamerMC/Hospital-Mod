@@ -15,6 +15,7 @@
   "item.hospital-mod.scalpel": "Scalpel",
   "item.hospital-mod.biohazard_bag": "Biohazard Bag",
   "block.hospital-mod.sharps_container": "Sharps Container",
+  "block.hospital-mod.biohazard_sign": "Biohazard Sign",
   "itemGroup.hospital-mod.hospital": "Hospital",
   "msg.hospital-mod.rested": "You lie back. Your vitals steady and this bed is now your respawn point.",
   "msg.hospital-mod.got_up": "You get up.",
@@ -41,5 +42,6 @@
   "msg.hospital-mod.sharps_level": "Sharps container: %s/%s full.",
   "msg.hospital-mod.sharps_full": "The bin is full. Seal it with a biohazard bag.",
   "msg.hospital-mod.sharps_empty": "The sharps container is empty.",
-  "msg.hospital-mod.sharps_sealed": "You seal the full bin into a biohazard bag. Safe to dispose of."
+  "msg.hospital-mod.sharps_sealed": "You seal the full bin into a biohazard bag. Safe to dispose of.",
+  "msg.hospital-mod.sharps_warning": "BIOHAZARD. The bin is overflowing."
 }

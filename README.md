@@ -18,7 +18,8 @@ pixel by pixel in `tools/pixelart.py`.
 | **IV Drip Stand** | A wheeled pole with an infusion pump. Refill the bag with a Saline Bag and it heals anyone within 4 blocks, one dose at a time. The bag visibly drains: full, half, then empty. |
 | **Heart Monitor** | The screen lights up on its own whenever a living patient is within 6 blocks, with a live ECG. Right-click for a full vitals chart of the nearest patient in chat. |
 | **Supply Cabinet** | Right-click to restock with bandages, painkillers, saline bags, syringes and the occasional medkit. 30 second cooldown per player. |
-| **Sharps Container** | A biohazard disposal bin. Drop used syringes in the slot and the window fills (empty, amber, half, full). When full it hisses green fumes and beeps until you seal it with a Biohazard Bag. |
+| **Sharps Container** | A biohazard disposal bin. Drop used syringes in the slot and the window fills (empty, amber, half, red). When it is full the lid gains hazard tape, a warning lamp rises on top, the bin glows, and it vents soul fumes and shrieks until you seal it with a Biohazard Bag. |
+| **Biohazard Sign** | A big glowing wall sign: red field, hazard tape top and bottom, the word BIOHAZARD and a large trefoil. Light level 14, so it lights the room on its own. |
 | **Hospital Floor / Wall** | Clean linoleum and panelled walls to build the ward with. |
 
 ## The tools

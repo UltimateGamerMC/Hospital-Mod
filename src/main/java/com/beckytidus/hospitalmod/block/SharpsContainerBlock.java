@@ -4,9 +4,11 @@ import com.beckytidus.hospitalmod.registry.ItemRegistry;
 import com.beckytidus.hospitalmod.util.Medic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -26,14 +28,24 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 /**
  * A sharps disposal bin. Drop used syringes in the slot and the window fills up. Once it is
- * full it starts hissing biohazard fumes until you seal it with a biohazard bag.
+ * full the hazard tape comes out, a warning lamp lights on top, the bin glows, and it starts
+ * venting soul fumes until you seal it with a biohazard bag.
  */
 public class SharpsContainerBlock extends FacingBlock {
 	/** 0 empty, 3 full. */
 	public static final IntegerProperty FILL = IntegerProperty.create("fill", 0, 3);
 	public static final int MAX_FILL = 3;
-	private static final int FUME_DELAY = 40;
-	private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 15.5, 15.0);
+	private static final int FUME_DELAY = 25;
+	private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+	/** The fumes that pour out of an overflowing bin. */
+	private static final ParticleOptions[] FUMES = {
+		ParticleTypes.SCULK_SOUL,
+		ParticleTypes.SOUL_FIRE_FLAME,
+		ParticleTypes.WITCH,
+		ParticleTypes.SMOKE,
+		ParticleTypes.ASH,
+	};
 
 	public SharpsContainerBlock(Properties properties) {
 		super(properties);
@@ -75,10 +87,17 @@ public class SharpsContainerBlock extends FacingBlock {
 				Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_full"));
 				return InteractionResult.SUCCESS;
 			}
-			level.setBlock(pos, state.setValue(FILL, fill + 1), Block.UPDATE_ALL, Block.UPDATE_LIMIT);
-			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_dropped", fill + 1, MAX_FILL));
-			Medic.sound(level, pos, SoundEvents.ITEM_PICKUP, 0.5F, 0.7F);
+			int next = fill + 1;
+			level.setBlock(pos, state.setValue(FILL, next), Block.UPDATE_ALL, Block.UPDATE_LIMIT);
+			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_dropped", next, MAX_FILL));
+			Medic.sound(level, pos, SoundEvents.SCULK_CATALYST_BLOOM, 0.6F, 0.8F);
 			Medic.particles((ServerLevel) level, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, ParticleTypes.CRIT, 6);
+			if (next >= MAX_FILL) {
+				// Overflowing: hazard tape, warning lamp and a proper shriek.
+				Medic.sound(level, pos, SoundEvents.SCULK_SHRIEKER_SHRIEK, 1.0F, 1.0F);
+				burst(level, pos);
+				Medic.chat(player, Component.translatable("msg.hospital-mod.sharps_warning"));
+			}
 			if (!player.isCreative()) {
 				stack.consume(1, player);
 			}
@@ -95,8 +114,8 @@ public class SharpsContainerBlock extends FacingBlock {
 			}
 			level.setBlock(pos, state.setValue(FILL, 0), Block.UPDATE_ALL, Block.UPDATE_LIMIT);
 			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_sealed"));
-			Medic.sound(level, pos, SoundEvents.ITEM_PICKUP, 0.7F, 0.6F);
-			Medic.particles((ServerLevel) level, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, ParticleTypes.WITCH, 12);
+			Medic.sound(level, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), 0.7F, 1.2F);
+			burst(level, pos);
 			if (!player.isCreative()) {
 				stack.consume(1, player);
 			}
@@ -115,7 +134,8 @@ public class SharpsContainerBlock extends FacingBlock {
 		if (fill <= 0) {
 			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_empty"));
 		} else if (fill >= MAX_FILL) {
-			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_full"));
+			Medic.chat(player, Component.translatable("msg.hospital-mod.sharps_warning"));
+			Medic.sound(level, pos, SoundEvents.SCULK_CATALYST_BLOOM, 0.5F, 0.6F);
 		} else {
 			Medic.actionBar(player, Component.translatable("msg.hospital-mod.sharps_level", fill, MAX_FILL));
 		}
@@ -125,12 +145,34 @@ public class SharpsContainerBlock extends FacingBlock {
 	@Override
 	protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (state.getValue(FILL) >= MAX_FILL) {
-			// Full bins hiss green fumes and beep for attention.
-			Medic.particles(level, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5, ParticleTypes.WITCH, 3);
+			double x = pos.getX() + 0.5;
+			double y = pos.getY() + 1.1;
+			double z = pos.getZ() + 0.5;
+
+			// Soul fumes leaking out of an overflowing bin.
+			ParticleOptions fume = FUMES[random.nextInt(FUMES.length)];
+			Medic.particles(level, x, y, z, fume, 3 + random.nextInt(3));
+			if (random.nextInt(3) == 0) {
+				Medic.particles(level, x, y, z, ParticleTypes.ELDER_GUARDIAN, 1);
+			}
 			if (random.nextInt(4) == 0) {
-				Medic.sound(level, pos, SoundEvents.NOTE_BLOCK_BELL.value(), 0.3F, 0.6F);
+				Medic.sound(level, pos, SoundEvents.SOUL_ESCAPE.value(), 0.5F, 0.6F);
+			} else if (random.nextInt(6) == 0) {
+				Medic.sound(level, pos, SoundEvents.SCULK_SHRIEKER_SHRIEK, 0.35F, 1.4F);
 			}
 		}
 		level.scheduleTick(pos, this, FUME_DELAY);
+	}
+
+	private static void burst(Level level, BlockPos pos) {
+		if (level instanceof ServerLevel server) {
+			double x = pos.getX() + 0.5;
+			double y = pos.getY() + 1.2;
+			double z = pos.getZ() + 0.5;
+			for (ParticleOptions fume : FUMES) {
+				Medic.particles(server, x, y, z, fume, 8);
+			}
+			Medic.particles(server, x, y, z, ParticleTypes.SONIC_BOOM, 1);
+		}
 	}
 }

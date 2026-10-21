@@ -29,6 +29,7 @@ public class HospitalMod implements ModInitializer {
 			output.accept(BlockRegistry.HOSPITAL_FLOOR.asItem());
 			output.accept(BlockRegistry.HOSPITAL_WALL.asItem());
 			output.accept(BlockRegistry.SHARPS_CONTAINER.asItem());
+			output.accept(BlockRegistry.BIOHAZARD_SIGN.asItem());
 		});
 
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(output -> {

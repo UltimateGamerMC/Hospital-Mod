@@ -5,7 +5,9 @@
     "sharps_body": "hospital-mod:block/sharps_body",
     "sharps_lid": "hospital-mod:block/sharps_lid",
     "sharps_hazard": "hospital-mod:block/sharps_hazard",
-    "sharps_window_empty": "hospital-mod:block/sharps_window_empty"
+    "sharps_window_empty": "hospital-mod:block/sharps_window_empty",
+    "sharps_lid_hazard": "hospital-mod:block/sharps_lid_hazard",
+    "sharps_lamp": "hospital-mod:block/sharps_lamp"
   },
   "elements": [
     {
@@ -425,14 +427,14 @@
     {
       "name": "hazard",
       "from": [
-        4,
-        4,
+        3,
+        3.4,
         1.42
       ],
       "to": [
-        12,
-        9.5,
-        1.6
+        13,
+        10.4,
+        1.62
       ],
       "faces": {
         "north": {
@@ -500,7 +502,7 @@
       ],
       "to": [
         12,
-        3.6,
+        3.3,
         1.6
       ],
       "faces": {

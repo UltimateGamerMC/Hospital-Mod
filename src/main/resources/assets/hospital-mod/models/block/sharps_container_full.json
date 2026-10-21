@@ -5,7 +5,9 @@
     "sharps_body": "hospital-mod:block/sharps_body",
     "sharps_lid": "hospital-mod:block/sharps_lid",
     "sharps_hazard": "hospital-mod:block/sharps_hazard",
-    "sharps_window_full": "hospital-mod:block/sharps_window_full"
+    "sharps_window_full": "hospital-mod:block/sharps_window_full",
+    "sharps_lid_hazard": "hospital-mod:block/sharps_lid_hazard",
+    "sharps_lamp": "hospital-mod:block/sharps_lamp"
   },
   "elements": [
     {
@@ -166,7 +168,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "south": {
           "uv": [
@@ -175,7 +177,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "east": {
           "uv": [
@@ -184,7 +186,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "west": {
           "uv": [
@@ -193,7 +195,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "up": {
           "uv": [
@@ -202,7 +204,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "down": {
           "uv": [
@@ -211,7 +213,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         }
       }
     },
@@ -235,7 +237,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "south": {
           "uv": [
@@ -244,7 +246,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "east": {
           "uv": [
@@ -253,7 +255,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "west": {
           "uv": [
@@ -262,7 +264,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "up": {
           "uv": [
@@ -271,7 +273,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "down": {
           "uv": [
@@ -280,7 +282,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         }
       }
     },
@@ -304,7 +306,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "south": {
           "uv": [
@@ -313,7 +315,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "east": {
           "uv": [
@@ -322,7 +324,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "west": {
           "uv": [
@@ -331,7 +333,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "up": {
           "uv": [
@@ -340,7 +342,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         },
         "down": {
           "uv": [
@@ -349,7 +351,7 @@
             16,
             16
           ],
-          "texture": "#sharps_lid"
+          "texture": "#sharps_lid_hazard"
         }
       }
     },
@@ -425,14 +427,14 @@
     {
       "name": "hazard",
       "from": [
-        4,
-        4,
+        3,
+        3.4,
         1.42
       ],
       "to": [
-        12,
-        9.5,
-        1.6
+        13,
+        10.4,
+        1.62
       ],
       "faces": {
         "north": {
@@ -500,7 +502,7 @@
       ],
       "to": [
         12,
-        3.6,
+        3.3,
         1.6
       ],
       "faces": {
@@ -557,6 +559,144 @@
             16
           ],
           "texture": "#equipment_dark"
+        }
+      }
+    },
+    {
+      "name": "lamp_stem",
+      "from": [
+        7.2,
+        15.4,
+        7.2
+      ],
+      "to": [
+        8.8,
+        16.2,
+        8.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#equipment_dark"
+        }
+      }
+    },
+    {
+      "name": "lamp",
+      "from": [
+        6,
+        16.2,
+        6
+      ],
+      "to": [
+        10,
+        19.2,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#sharps_lamp"
         }
       }
     }

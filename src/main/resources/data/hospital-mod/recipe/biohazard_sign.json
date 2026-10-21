@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:yellow_dye",
+    "minecraft:red_dye",
+    "minecraft:glowstone_dust"
+  ],
+  "result": {
+    "id": "hospital-mod:biohazard_sign",
+    "count": 1
+  }
+}

@@ -73,6 +73,12 @@ public final class WardBuilder {
 			com.beckytidus.hospitalmod.block.MedicalCabinetBlock.FACING, rotate(Direction.WEST, facing)));
 		set(level, world(floor, facing, HALF_WIDTH - 1, 0, 6), BlockRegistry.SHARPS_CONTAINER.defaultBlockState().setValue(
 			com.beckytidus.hospitalmod.block.FacingBlock.FACING, rotate(Direction.WEST, facing)));
+		// Biohazard signs, mounted high on the far wall above the beds. Placed one block
+		// short of the wall so the wall itself stays intact behind them.
+		for (int x : new int[]{-1, 1}) {
+			set(level, world(floor, facing, x, 2, LENGTH - 1), BlockRegistry.BIOHAZARD_SIGN.defaultBlockState().setValue(
+				com.beckytidus.hospitalmod.block.FacingBlock.FACING, facing.getOpposite()));
+		}
 	}
 
 	private static void set(ServerLevel level, BlockPos pos, BlockState state) {

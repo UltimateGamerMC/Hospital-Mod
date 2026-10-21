@@ -3,6 +3,7 @@ package com.beckytidus.hospitalmod.registry;
 import java.util.function.Function;
 
 import com.beckytidus.hospitalmod.HospitalMod;
+import com.beckytidus.hospitalmod.block.BiohazardSignBlock;
 import com.beckytidus.hospitalmod.block.HeartMonitorBlock;
 import com.beckytidus.hospitalmod.block.HospitalBedBlock;
 import com.beckytidus.hospitalmod.block.IvStandBlock;
@@ -29,6 +30,7 @@ public class BlockRegistry {
 	public static Block IV_STAND;
 	public static Block HEART_MONITOR;
 	public static Block SHARPS_CONTAINER;
+	public static Block BIOHAZARD_SIGN;
 
 	public static void register() {
 		HOSPITAL_FLOOR = block("hospital_floor", Block::new, props(MapColor.QUARTZ).strength(1.6F, 6.0F).sound(SoundType.STONE));
@@ -38,7 +40,11 @@ public class BlockRegistry {
 		HOSPITAL_BED = block("hospital_bed", HospitalBedBlock::new, props(MapColor.COLOR_LIGHT_BLUE).strength(1.2F, 4.0F).sound(SoundType.WOOL).noOcclusion());
 		IV_STAND = block("iv_stand", IvStandBlock::new, props(MapColor.METAL).strength(1.0F, 4.0F).sound(SoundType.METAL).noOcclusion());
 		HEART_MONITOR = block("heart_monitor", HeartMonitorBlock::new, props(MapColor.METAL).strength(1.4F, 4.0F).sound(SoundType.METAL).noOcclusion());
-		SHARPS_CONTAINER = block("sharps_container", SharpsContainerBlock::new, props(MapColor.COLOR_RED).strength(1.4F, 4.0F).sound(SoundType.METAL).noOcclusion());
+		SHARPS_CONTAINER = block("sharps_container", SharpsContainerBlock::new, props(MapColor.COLOR_RED)
+			.strength(1.4F, 4.0F).sound(SoundType.METAL).noOcclusion()
+			.lightLevel(state -> switch (state.getValue(SharpsContainerBlock.FILL)) { case 3 -> 13; case 2 -> 6; default -> 0; }));
+		BIOHAZARD_SIGN = block("biohazard_sign", BiohazardSignBlock::new, props(MapColor.COLOR_RED)
+			.strength(1.0F, 4.0F).sound(SoundType.METAL).noOcclusion().lightLevel(state -> 14));
 	}
 
 	private static BlockBehaviour.Properties props(MapColor mapColor) {

@@ -46,6 +46,11 @@ PALETTE = {
     "t": (127, 196, 220, 255),  # fluid
     "u": (217, 228, 236, 255),  # very pale
     "v": (148, 167, 180, 255),  # shadow gray
+    "A": (238, 64, 58, 255),    # hazard red
+    "B": (168, 26, 26, 255),    # deep red
+    "C": (255, 208, 56, 255),   # hazard yellow
+    "D": (24, 20, 18, 255),     # hazard ink
+    "E": (255, 240, 210, 255),  # warm white
 }
 
 ART = {}
@@ -434,22 +439,22 @@ ART["block/medical_cabinet_top"] = [
 
 # ------------------------------------------------------------------- items ---
 ART["block/sharps_body"] = [
-    "hhhhhhhhhhhhhhhh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hhhhhhhhhhhhhhhh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hhhhhhhhhhhhhhhh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hhhhhhhhhhhhhhhh",
-    "hggggggggggggggh",
-    "hggggggggggggggh",
-    "hhhhhhhhhhhhhhhh",
+    "AAAAAAAAAAAAAAAA",
+    "ABBBBBBBBBBBBBBA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
+    "ABBBBBBBBBBBBBBA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
+    "ABBBBBBBBBBBBBBA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
+    "ABBBBBBBBBBBBBBA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
+    "ABBBBBBBBBBBBBBA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
 ]
 
 ART["block/sharps_lid"] = [
@@ -719,44 +724,155 @@ ART["item/scalpel"] = [
 ]
 
 
-def biohazard_rows(size=16):
-    """The biohazard trefoil: three lobes around a centre ring, placed pixel by pixel."""
+FONT5X7 = {
+    "B": ["11110", "10001", "10001", "11110", "10001", "10001", "11110"],
+    "I": ["11111", "00100", "00100", "00100", "00100", "00100", "11111"],
+    "O": ["01110", "10001", "10001", "10001", "10001", "10001", "01110"],
+    "H": ["10001", "10001", "10001", "11111", "10001", "10001", "10001"],
+    "A": ["01110", "10001", "10001", "11111", "10001", "10001", "10001"],
+    "Z": ["11111", "00001", "00010", "00100", "01000", "10000", "11111"],
+    "R": ["11110", "10001", "10001", "11110", "10100", "10010", "10001"],
+    "D": ["11110", "10001", "10001", "10001", "10001", "10001", "11110"],
+    " ": ["00000", "00000", "00000", "00000", "00000", "00000", "00000"],
+}
+
+
+def hazard_stripe(x, y, period=4):
+    """Diagonal yellow and black hazard tape."""
+    return "C" if ((x + y) // 2) % period < period // 2 else "D"
+
+
+def hazard_band(width, height, phase=0):
+    return ["".join(hazard_stripe(x + phase, y + phase) for x in range(width)) for y in range(height)]
+
+
+def biohazard_ink(size, ink="D", field="C"):
+    """The biohazard trefoil, placed pixel by pixel from three lobes and a centre ring.
+
+    All the geometry is a fraction of `size`, so the same symbol scales from a 16 pixel
+    label up to a 64 pixel wall sign.
+    """
     import math
 
     centre = (size - 1) / 2.0
-    lobes = [(90.0, 3.7, 3.1), (210.0, 3.7, 3.1), (330.0, 3.7, 3.1)]
+    distance = size * 0.231
+    radius = size * 0.194
+    ring = size * 0.150
+    hole = size * 0.069
+    lobes = [(90.0, distance, radius), (210.0, distance, radius), (330.0, distance, radius)]
     rows = []
     for y in range(size):
         row = ""
         for x in range(size):
-            ink = False
-            for angle, distance, radius in lobes:
+            solid = False
+            for angle, dist, rad in lobes:
                 a = math.radians(angle)
-                lx = centre + math.cos(a) * distance
-                ly = centre - math.sin(a) * distance
+                lx = centre + math.cos(a) * dist
+                ly = centre - math.sin(a) * dist
                 d = math.hypot(x - lx, y - ly)
-                if d <= radius:
-                    ink = True
-                if d <= radius * 0.40:
-                    ink = False
+                if d <= rad:
+                    solid = True
+                if d <= rad * 0.40:
+                    solid = False
             dc = math.hypot(x - centre, y - centre)
-            if dc <= 2.4:
-                ink = True
-            if dc <= 1.1:
-                ink = False
-            row += "0" if ink else "i"
+            if dc <= ring:
+                solid = True
+            if dc <= hole:
+                solid = False
+            row += ink if solid else field
         rows.append(row)
     return rows
 
 
-ART["block/sharps_hazard"] = biohazard_rows()
+def trefoil_label(size=32):
+    """A yellow warning label with a big trefoil and a black frame."""
+    rows = biohazard_ink(size)
+    frame = ["D" * size]
+    out = [frame[0]]
+    for index, row in enumerate(rows[1:-1], start=1):
+        out.append("D" + row[1:-1] + "D")
+    out.append(frame[0])
+    return out
+
+
+ART["block/sharps_hazard"] = trefoil_label(32)
+ART["block/sharps_lid_hazard"] = hazard_band(16, 16)
+ART["block/sharps_lamp"] = [
+    "CCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCC",
+    "CCCCAAAAAAAACCCC",
+    "CCCAAAAAAAAAACCC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCAAAAAAAAAAAACC",
+    "CCCAAAAAAAAAACCC",
+    "CCCCAAAAAAAACCCC",
+    "CCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCC",
+]
+
+
+def draw_text(pixels, x0, y0, text, colour):
+    """Blit the little 5x7 font, one pixel at a time."""
+    cursor = x0
+    for char in text:
+        glyph = FONT5X7.get(char)
+        if glyph:
+            for gy, row in enumerate(glyph):
+                for gx, bit in enumerate(row):
+                    if bit == "1":
+                        pixels[cursor + gx, y0 + gy] = colour
+        cursor += 6
+
+
+def make_biohazard_sign():
+    """A 64x64 wall sign: hazard tape, the word BIOHAZARD, and a big black trefoil on red."""
+    size = 64
+    image = Image.new("RGBA", (size, size), PALETTE["A"])
+    pixels = image.load()
+
+    for y in list(range(0, 8)) + list(range(56, 64)):
+        for x in range(size):
+            pixels[x, y] = PALETTE[hazard_stripe(x, y)]
+
+    # Yellow name plate.
+    for y in range(9, 19):
+        for x in range(size):
+            pixels[x, y] = PALETTE["C"]
+    for x in range(size):
+        pixels[x, 9] = PALETTE["D"]
+        pixels[x, 18] = PALETTE["D"]
+    for y in range(9, 19):
+        pixels[0, y] = PALETTE["D"]
+        pixels[size - 1, y] = PALETTE["D"]
+
+    draw_text(pixels, 5, 11, "BIOHAZARD", PALETTE["D"])
+
+    # Big trefoil on the red field.
+    trefoil = biohazard_ink(40, ink="D", field="A")
+    for y, row in enumerate(trefoil):
+        for x, char in enumerate(row):
+            tx, ty = 12 + x, 20 + y
+            if 0 <= tx < size and 0 <= ty < size:
+                pixels[tx, ty] = PALETTE[char]
+
+    path = os.path.join(TEX, "block", "biohazard_sign.png")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    image.save(path)
+    return path
 
 
 def paint(name, rows):
     """Turn one character grid into a PNG."""
-    if len(rows) != 16 or any(len(r) != 16 for r in rows):
-        raise SystemExit(f"{name}: art must be exactly 16 rows of 16 characters")
-    image = Image.new("RGBA", (16, 16))
+    size = len(rows)
+    if any(len(r) != size for r in rows):
+        raise SystemExit(f"{name}: art must be a square grid")
+    image = Image.new("RGBA", (size, size))
     pixels = []
     for row in rows:
         for char in row:
@@ -830,8 +946,9 @@ def make_icon():
 def main():
     for name, rows in ART.items():
         paint(name, rows)
+    make_biohazard_sign()
     make_icon()
-    print(f"painted {len(ART)} textures + icon")
+    print(f"painted {len(ART)} textures + the biohazard sign + icon")
 
 
 if __name__ == "__main__":

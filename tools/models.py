@@ -50,6 +50,9 @@ GOWN = "patient_gown"
 SHARPS_BODY = "sharps_body"
 SHARPS_LID = "sharps_lid"
 SHARPS_HAZARD = "sharps_hazard"
+SHARPS_LID_HAZARD = "sharps_lid_hazard"
+SHARPS_LAMP = "sharps_lamp"
+BIOHAZARD_SIGN = "biohazard_sign"
 
 
 def tex(*names):
@@ -57,18 +60,31 @@ def tex(*names):
 
 
 # ===================================================== SHARPS CONTAINER ======
-def sharps_elements(window_texture):
-    return [
+def sharps_elements(window_texture, full=False):
+    lid_texture = SHARPS_LID_HAZARD if full else SHARPS_LID
+    parts = [
         box("base", (1, 0, 1), (15, 1, 15), DARK),
         box("body", (1.5, 1, 1.5), (14.5, 11.5, 14.5), SHARPS_BODY),
-        box("rim", (1.2, 11.5, 1.2), (14.8, 12.5, 14.8), SHARPS_LID),
-        box("lid", (1, 12.5, 1), (15, 14.6, 15), SHARPS_LID),
-        box("handle", (6, 14.6, 6.5), (10, 15.4, 9.5), SHARPS_LID),
+        box("rim", (1.2, 11.5, 1.2), (14.8, 12.5, 14.8), lid_texture),
+        box("lid", (1, 12.5, 1), (15, 14.6, 15), lid_texture),
+        box("handle", (6, 14.6, 6.5), (10, 15.4, 9.5), lid_texture),
         box("slot", (4.5, 12.9, 0.9), (11.5, 14.1, 1.5), DARK),
-        box("hazard", (4, 4, 1.42), (12, 9.5, 1.6), DARK,
+        box("hazard", (3, 3.4, 1.42), (13, 10.4, 1.62), DARK,
             faces={"north": SHARPS_HAZARD}),
-        box("window", (4, 1.5, 1.42), (12, 3.6, 1.6), DARK,
+        box("window", (4, 1.5, 1.42), (12, 3.3, 1.6), DARK,
             faces={"north": window_texture}),
+    ]
+    if full:
+        # Full bin: hazard tape on the lid plus a warning lamp on top.
+        parts.append(box("lamp_stem", (7.2, 15.4, 7.2), (8.8, 16.2, 8.8), DARK))
+        parts.append(box("lamp", (6, 16.2, 6), (10, 19.2, 10), SHARPS_LAMP))
+    return parts
+
+
+def sign_elements():
+    return [
+        box("plate", (1, 2, 0), (15, 14, 1), DARK, faces={"north": BIOHAZARD_SIGN}),
+        box("bracket", (2, 1.4, 0.8), (14, 2.2, 1.4), DARK),
     ]
 
 
@@ -170,8 +186,11 @@ def build_models():
     models["iv_stand_empty"] = model(iv_elements("iv_bag_empty", SCREEN), tex(STEEL, DARK, WHITE, TEAL, TUBE, SCREEN, SCREEN_ON, "iv_bag_empty"))
     for suffix, window in (("", "sharps_window_empty"), ("_low", "sharps_window_low"),
                            ("_half", "sharps_window_half"), ("_full", "sharps_window_full")):
+        full = suffix == "_full"
         models["sharps_container" + suffix] = model(
-            sharps_elements(window), tex(DARK, SHARPS_BODY, SHARPS_LID, SHARPS_HAZARD, window))
+            sharps_elements(window, full),
+            tex(DARK, SHARPS_BODY, SHARPS_LID, SHARPS_HAZARD, window, SHARPS_LID_HAZARD, SHARPS_LAMP))
+    models["biohazard_sign"] = model(sign_elements(), tex(DARK, BIOHAZARD_SIGN))
     models["heart_monitor"] = model(monitor_elements(SCREEN, DARK), tex(STEEL, DARK, WHITE, TEAL, SCREEN))
     models["heart_monitor_on"] = model(monitor_elements(SCREEN_ON, TEAL), tex(STEEL, DARK, WHITE, TEAL, SCREEN, SCREEN_ON))
 
@@ -219,6 +238,10 @@ def blockstates():
             for facing, y in (("north", 0), ("east", 90), ("south", 180), ("west", 270))
             for fill in range(4)
         }},
+        "biohazard_sign": {"variants": {
+            f"facing={facing}": {"model": f"{NS}:block/biohazard_sign", "y": y}
+            for facing, y in (("north", 0), ("east", 90), ("south", 180), ("west", 270))
+        }},
         "medical_cabinet": {"variants": {
             f"facing={facing}": {"model": f"{NS}:block/medical_cabinet", "y": y}
             for facing, y in (("north", 0), ("east", 90), ("south", 180), ("west", 270))
@@ -238,7 +261,7 @@ def model_for_charge(charge):
     return "iv_stand"
 
 
-BLOCKS = ["hospital_floor", "hospital_wall", "medical_cabinet", "hospital_bed", "iv_stand", "heart_monitor", "sharps_container"]
+BLOCKS = ["hospital_floor", "hospital_wall", "medical_cabinet", "hospital_bed", "iv_stand", "heart_monitor", "sharps_container", "biohazard_sign"]
 TOOLS = ["bandage", "medkit", "painkillers", "saline_bag", "syringe", "stethoscope", "defibrillator", "scalpel", "biohazard_bag"]
 
 
@@ -261,6 +284,7 @@ def recipes():
     out["scalpel"] = shaped(["  I", " I ", "S  "], {"I": "minecraft:iron_ingot", "S": "minecraft:stick"}, "scalpel", 1)
     out["sharps_container"] = shaped(["I I", "RGR", "III"], {"I": "minecraft:iron_ingot", "R": "minecraft:red_dye", "G": "minecraft:glass_pane"}, "sharps_container", 1)
     out["biohazard_bag"] = shapeless(["minecraft:paper", "minecraft:yellow_dye", "minecraft:string"], "biohazard_bag", 2)
+    out["biohazard_sign"] = shapeless(["minecraft:paper", "minecraft:yellow_dye", "minecraft:red_dye", "minecraft:glowstone_dust"], "biohazard_sign", 1)
     return out
 
 
@@ -313,6 +337,7 @@ LANG = {
     "item.hospital-mod.scalpel": "Scalpel",
     "item.hospital-mod.biohazard_bag": "Biohazard Bag",
     "block.hospital-mod.sharps_container": "Sharps Container",
+    "block.hospital-mod.biohazard_sign": "Biohazard Sign",
     "itemGroup.hospital-mod.hospital": "Hospital",
     "msg.hospital-mod.rested": "You lie back. Your vitals steady and this bed is now your respawn point.",
     "msg.hospital-mod.got_up": "You get up.",
@@ -340,6 +365,7 @@ LANG = {
     "msg.hospital-mod.sharps_full": "The bin is full. Seal it with a biohazard bag.",
     "msg.hospital-mod.sharps_empty": "The sharps container is empty.",
     "msg.hospital-mod.sharps_sealed": "You seal the full bin into a biohazard bag. Safe to dispose of.",
+    "msg.hospital-mod.sharps_warning": "BIOHAZARD. The bin is overflowing.",
 }
 
 
@@ -418,13 +444,15 @@ def main():
           bbmodel("hospital_bed_occupied", bed_elements(True), None, [STEEL, MATTRESS, PILLOW, BLANKET, WHITE, TEAL, DARK, SKIN, GOWN]))
     write(os.path.join(BBMODEL, "iv_stand.bbmodel"),
           bbmodel("iv_stand", iv_elements("iv_bag_full", SCREEN_ON), None, [STEEL, DARK, WHITE, TEAL, TUBE, SCREEN, SCREEN_ON, "iv_bag_full"]))
+    write(os.path.join(BBMODEL, "biohazard_sign.bbmodel"),
+          bbmodel("biohazard_sign", sign_elements(), None, [DARK, BIOHAZARD_SIGN]))
     write(os.path.join(BBMODEL, "sharps_container.bbmodel"),
           bbmodel("sharps_container", sharps_elements("sharps_window_full"), None,
                   [DARK, SHARPS_BODY, SHARPS_LID, SHARPS_HAZARD, "sharps_window_full"]))
     write(os.path.join(BBMODEL, "heart_monitor.bbmodel"),
           bbmodel("heart_monitor", monitor_elements(SCREEN_ON, TEAL), None, [STEEL, DARK, WHITE, TEAL, SCREEN, SCREEN_ON]))
 
-    print(f"wrote {len(models)} block models, {len(BLOCKS)} blockstates, {len(recipe_data)} recipes, lang, loot tables ({args.mc}) and 5 bbmodels")
+    print(f"wrote {len(models)} block models, {len(BLOCKS)} blockstates, {len(recipe_data)} recipes, lang, loot tables ({args.mc}) and 6 bbmodels")
 
 
 if __name__ == "__main__":
