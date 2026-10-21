@@ -1,7 +1,11 @@
 # Hospital Mod
 
-A working hospital for Minecraft: patient beds, IV drips, heart monitors, a supply cabinet and a
-full set of medical tools. Built for **Fabric**, on **Minecraft 26.3** and **1.21.11**.
+[![Modrinth](https://img.shields.io/badge/Modrinth-hospital-00AF5C)](https://modrinth.com/mod/hospital)
+[![GitHub](https://img.shields.io/badge/GitHub-Hospital--Mod-181717?logo=github)](https://github.com/UltimateGamerMC/Hospital-Mod)
+
+A working hospital for Minecraft: patient beds, IV drips, heart monitors, a supply cabinet, a
+biohazard sharps bin and a full set of medical tools. Built for **Fabric**, on **Minecraft 26.3**
+and **1.21.11**.
 
 Everything is hand-made: three custom block models authored box by box, and 16x16 textures drawn
 pixel by pixel in `tools/pixelart.py`.
